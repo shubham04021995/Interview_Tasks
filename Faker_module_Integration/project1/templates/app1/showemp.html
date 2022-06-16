@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <title>SHOW EMPLOYEE</title>
+    {% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">EID</th>
+        <th scope="col">ENAME</th>
+        <th scope="col">ESALARY</th>
+        <th scope="col">ECITY</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+      <tr>
+        <td>{{i.eid}}</td>
+        <td>{{i.ename}}</td>
+        <td>{{i.esalary}}</td>
+        <td>{{i.ecity}}</td>
+        <td><button><a href="">UPDATE</a></button></td>
+        <td><button><a href="">DELETE</a></button></td>
+        
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}    
