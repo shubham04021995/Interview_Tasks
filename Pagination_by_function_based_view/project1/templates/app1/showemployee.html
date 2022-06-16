@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <title>SHOW EMPLOYEE</title>
+    {% endblock %} 
+
+{% block content %}   
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">EID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">CITY</th>
+        <th scope="col">SALARY</th>
+        <th scope="col">DEPARTMENT</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+
+        
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+      <tr>
+        <td>{{i.eid}}</td>
+        <td>{{i.ename}}</td>
+        <td>{{i.ecity}}</td>
+        <td>{{i.esalary}}</td>
+        <td>{{i.edept}}</td>
+        <td><button><a href="{% url 'update.urls' i.eid %}">UPDATE</a></button></td>
+        <td><button><a href="{% url 'delete.urls' i.eid %}">DELETE</a></button></td>
+        
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="paginator justify-content-center">
+    {% if data.has_previous %}
+    <a href="{% url 'show.urls' %}?page={{data.previous_page_number}}">Previous</a>
+    {% endif %}
+
+    <span class="mx-4">
+      Page {{ data.number }} of {{ data.paginator.num_pages }}
+    </span>
+
+    {% if data.has_next %}
+    <a href="{% url 'show.urls' %}?page={{data.next_page_number}}">Next</a>
+    {% endif %}
+
+  </div>
+
+{% endblock %} 
