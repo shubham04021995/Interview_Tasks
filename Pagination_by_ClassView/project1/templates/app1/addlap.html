@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+    {% block title %}
+    <title>ADD LAPTOP</title>
+    {% endblock %}
+
+{% block content %} 
+<div class="container jumbotron">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="ADD LAPTOP" class="btn btn-success">
+        <input type="reset" value="CLEAR" class="btn btn-danger">
+
+    </form>
+</div> 
+{% endblock %}  

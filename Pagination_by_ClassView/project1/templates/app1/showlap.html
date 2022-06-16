@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <title>SHOW LAPTOP</title>
+    {% endblock %}
+
+{% block content %}
+  
+  
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">LAPTOP_ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">BRAND</th>
+        <th scope="col">RAM</th>
+        <th scope="col">ROM</th>
+        <th scope="col">HDD</th>
+        <th scope="col">IMAGE</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in obj %}
+      <tr>
+          <td>{{i.laptop_id}}</td>
+          <td>{{i.name}}</td>
+          <td>{{i.brand}}</td>
+          <td>{{i.ram}}</td>
+          <td>{{i.rom}}</td>
+          <td>{{i.HDD}}</td>
+          <td><img src="{{i.image.url}}" width="25" height="25"></td>
+          <td><a href="{{i.description.url}}">{{i.description.url}}</a></td>
+          <td><button><a href="{% url 'update.urls' i.laptop_id%}">UPDATE</a></button></td>
+          <td><button><a href="{% url 'delete.urls' i.laptop_id%}">DELETE</a></button></td>
+  
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="pagination justify-content-center">
+      {% if obj.has_previous %}
+
+      <a href="{% url 'show.urls' %}?page={{obj.previous_page_number}}">previous</a>
+      {% endif %}
+
+      <span class="mx-4">
+          page{{obj.number}} of {{obj.paginator.num_pages}}
+      </span>
+
+      {% if obj.has_next %}
+      <a href="{% url 'show.urls' %}?page={{obj.next_page_number}}">NEXT</a>
+      {% endif %}
+
+  </div>
+{% endblock %}    
