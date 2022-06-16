@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>SHOW DATA</title>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">CID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">MOBILE</th>
+        <th scope="col">CITY</th>
+        <th scope="col">BILL</th>
+        <th scope="col">GENERATE PDF</th>
+        <th scope="col">GET ALL RECORD</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in obj %}
+      <tr>
+        <th scope="row">{{i.cid}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.city}}</td>
+        <td>{{i.bill}}</td>
+        <td><button class="btn btn-dark btn-sm"><a href="{% url 'showoneurl' i.id %}">GENERATE</a></button></td>
+        <td><button class="btn btn-light btn-sm"><a href="{% url 'showurl1' %}">ALL RECORD</a></button></td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+{% endblock %}
