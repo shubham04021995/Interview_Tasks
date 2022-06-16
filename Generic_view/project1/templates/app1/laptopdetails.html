@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+    <title>LAPTOP DETAILS</title>
+    {% endblock %}
+
+{% block content %}  
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">LAPTOP_ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">BRAND</th>
+        <th scope="col">RAM</th>
+        <th scope="col">ROM</th>
+        <th scope="col">HDD</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{object.laptop_id}}</td>
+          <td>{{object.name}}</td>
+          <td>{{object.brand}}</td>
+          <td>{{object.ram}}</td>
+          <td>{{object.ram}}</td>
+          <td>{{object.HDD}}</td>
+          <td><button class="btn btn-warning"><a>UPDATE</a></button></td>
+          <td><button class="btn btn-danger"><a>DELETE</a></button></td>
+       
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}  
